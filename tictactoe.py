@@ -76,13 +76,19 @@ board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 while(game_on):
     # Player 1 move
     player_1_move = input(f"Player 1: where do you want to place your {player_1_piece} on the board pick a number between 1 and 9: ")
-    player_1_move_num = int(player_1_move)
-    if player_1_move_num < 1 or player_1_move_num > 9:
-        print("Invalid move pick a number between 1 to 9")
-    if board[player_1_move_num - 1] == " ":
-        board[player_1_move_num - 1] = player_1_piece
+    if not player_1_move.isdigit():
+        print("Invalid move pick a number from 1 to 9")
+        player_1_move = input(f"Player 1: where do you want to place your {player_1_piece} on the board pick a number between 1 and 9: ")
     else:
-        print("Invalid move \n")
+        player_1_move_num = int(player_1_move)
+        if player_1_move_num < 1 or player_1_move_num > 9:
+            print("Invalid move pick a number between 1 to 9")
+            player_1_move = input(f"Player 1: where do you want to place your {player_1_piece} on the board pick a number between 1 and 9: ")
+        if board[player_1_move_num - 1] == " ":
+            board[player_1_move_num - 1] = player_1_piece
+        else:
+            print("Invalid move \n")
+            player_1_move = input(f"Player 1: where do you want to place your {player_1_piece} on the board pick a number between 1 and 9: ")
     
     display_board(board)
     # check if game is over
@@ -99,15 +105,19 @@ while(game_on):
 
     # Player 2 move
     player_2_move = input(f" Player 2: where do you want to place your {player_2_piece} on the board pick a number between 1 and 9: ")
-    player_2_move_num = int(player_2_move)
-    if player_2_move_num < 1 or player_2_move_num > 9:
-        print("Invalid move pick a number between 1 to 9")
-    if(type(player_2_move_num) != int):
-        print("Invalid move enter a number between 1 to 9")
-    if board[player_2_move_num - 1] == " ":
-        board[player_2_move_num - 1] = player_2_piece
+    if not player_2_move.isdigit():
+        print("Invalid move pick a number from 1 to 9")
+        input(f" Player 2: where do you want to place your {player_2_piece} on the board pick a number between 1 and 9: ")
     else:
-        print("invalid move")
+        player_2_move_num = int(player_2_move)
+        if player_2_move_num < 1 or player_2_move_num > 9:
+            print("Invalid move pick a number between 1 to 9")
+            input(f" Player 2: where do you want to place your {player_2_piece} on the board pick a number between 1 and 9: ")
+        if board[player_2_move_num - 1] == " ":
+            board[player_2_move_num - 1] = player_2_piece
+        else:
+            print("invalid move")
+            input(f" Player 2: where do you want to place your {player_2_piece} on the board pick a number between 1 and 9: ")
     
     display_board(board)
     # check if game is over
